@@ -19,14 +19,15 @@ class ViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerObserv
         return canvas
     }()
     
+    private let toolPicker = PKToolPicker()
     let drawing = PKDrawing() // To save drawing
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(canvasView)
         // Do any additional setup after loading the view.
         canvasView.delegate = self
         canvasView.drawing = drawing // Render image once the user saves it
-        view.addSubview(canvasView)
     }
     
     // Set frame
@@ -37,13 +38,13 @@ class ViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerObserv
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let toolPicker = PKToolPicker()
+        
         toolPicker.setVisible(true, forFirstResponder: canvasView)
         toolPicker.addObserver(canvasView)
         canvasView.becomeFirstResponder()
     }
     
-    // Canvas functions and breakpoints
+    /* Canvas functions and breakpoints
     @objc func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
         
     }
@@ -55,8 +56,7 @@ class ViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerObserv
     }
     @objc func canvasViewDidFinishRendering(_ canvasView: PKCanvasView) {
         
-    }
-
+    }*/
 
 }
 
